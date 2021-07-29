@@ -5,11 +5,25 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 export const Header = styled.div`
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin:0 20px;
 `;
 
 export const Title = styled.div`
     color:#006ABA;
+`;
+
+export const SearchInput = styled.input`
+    border:1px solid #bbb;
+    border-radius:10px;
+    width:300px;
+    height:45px;
+    outline:0;
+    padding-left:10px;
+    font-size:15px;
+}
 `;
 export const ShoppingArea = styled.div`
     display:flex;
@@ -27,10 +41,20 @@ export const ProductList = styled.div`
 `;
 
 export const CartArea = styled.div`
-    width: 300px;
-    margin: 20px;
-    background-color:#FFF;
+    width: 320px;
+`;
+
+export const SelectArea = styled.div`
+    margin-top: 20px;
+`;
+
+export const Select = styled.select`
+    margin-top: 10px;
     border-radius:5px;
-    box-shadow:0px 3px 6px rgba(0, 0, 0, 0.16);
-    color:#006ABA;
+    padding:5px 10px;
+    border: 1px solid #777;
+`;
+
+export const Text = styled.div`
+    color: #333;
 `;

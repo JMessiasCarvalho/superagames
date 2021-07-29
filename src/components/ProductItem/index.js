@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { 
     Container,
+    Score,
     ProductPhotoArea,
     ProductPhoto,
     ProductInfoArea,
@@ -24,6 +25,7 @@ export default ({data}) => {
 
     return (
         <Container>
+            <Score>{data.score}</Score>
             <ProductPhotoArea>
                 <ProductPhoto src={`assets/${data.image}`} />
             </ProductPhotoArea>

@@ -1,17 +1,33 @@
 import styled from 'styled-components';
 
-export const CartArea = styled.div``;
+export const CartArea = styled.div`
+    position:fixed;
+    bottom:0;
+    right:30px;
+    width: 300px;
+    background-color:#FFF;
+    border-radius:5px;
+    box-shadow:0px 3px 6px rgba(0, 0, 0, 0.16);
+    color:#006ABA;
+`;
 export const CartHeader = styled.div`
     background-color:#045996;
     display:flex;
     align-items:center;
+    justify-content:space-evenly;
     height:50px;
     width:100%;
     color:#FFF;
-    margin-bottom:10px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
+    cursor:pointer;
 `;
+
+export const CartBody = styled.div`
+    display:${props=>props.showCart? 'blcok' : 'none'};
+    margin-top:10px;
+`;
+
 export const CartIcon = styled.img`
     width:28px;
     margin: 0 10px;

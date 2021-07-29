@@ -9,7 +9,18 @@ export const Container = styled.div`
     flex-direction:column;
     align-items:center;
     color:#006ABA;
+    position:relative;
 `;
+
+export const Score = styled.div`
+    position:absolute;
+    top:0;
+    left:0;
+    background-color:#045996;
+    color:#FFF;
+    padding:5px 10px;
+`;
+
 export const ProductPhotoArea = styled.div``;
 
 export const ProductPhoto = styled.img`
