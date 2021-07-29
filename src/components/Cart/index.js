@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     CartArea,
     CartHeader,
@@ -12,7 +12,11 @@ import {
     ProductPrice,
     ProductQuantityArea,
     ProductQtIcon,
-    ProductQtText
+    ProductQtText,
+    ResumeTotalArea,
+    ResumeTotalDivision,
+    ResumeText,
+    ResumeValue
 } from './styled'
 import { useSelector, useDispatch } from 'react-redux';
 import cartIcon from './cart-icon.svg';
@@ -20,6 +24,24 @@ import cartIcon from './cart-icon.svg';
 export default () => {
     const dispatch = useDispatch();
     const products = useSelector(state => state.cart.products);
+
+    const [subtotal, setSubtotal] = useState(0);
+    const [shipping, setShipping] = useState(0);
+    const [total, setTotal] = useState(0);
+
+    useEffect(()=>{
+        let subtotal = 0;
+        
+        products.forEach(item => {
+            subtotal += item.qt * item.price
+        })
+
+        let shipping =(subtotal >= 250 ? 0 : products.length * 10 );
+        setShipping(shipping.toFixed(2));
+        setSubtotal(subtotal.toFixed(2));
+        setTotal((subtotal + shipping).toFixed(2));
+
+    }, [products])
 
     const handleProductChange = (key, type) => {
         dispatch({
@@ -29,6 +51,7 @@ export default () => {
     }
 
     return (
+        console.log(subtotal),
         <CartArea>
             <CartHeader>
                 <CartIcon src={cartIcon} atl="cart-icon" />
@@ -40,7 +63,7 @@ export default () => {
                         <ProductPhoto src={`assets/${item.image}`} />
                         <ProductInfoArea>
                             <ProductName>{item.name}</ProductName>
-                            <ProductPrice>R$ {item.price * item.qt}</ProductPrice>
+                            <ProductPrice>R$ {(item.price * item.qt).toFixed(2)}</ProductPrice>
                         </ProductInfoArea>
                         <ProductQuantityArea>
                             <ProductQtIcon onClick={()=>handleProductChange(index, '-')}>-</ProductQtIcon>
@@ -49,8 +72,22 @@ export default () => {
                         </ProductQuantityArea>
                     </ProductItem>
                 ))}
-                
             </ProductsArea>
+            <hr></hr>
+            <ResumeTotalArea>
+                <ResumeTotalDivision>
+                    <ResumeText>Subtotal:</ResumeText>
+                    <ResumeValue>R$ {subtotal}</ResumeValue>
+                </ResumeTotalDivision>
+                <ResumeTotalDivision>                 
+                    <ResumeText>Frete:</ResumeText>
+                    <ResumeValue>R$ {shipping}</ResumeValue>
+                </ResumeTotalDivision>
+                <ResumeTotalDivision>
+                    <ResumeText>Total:</ResumeText>
+                    <ResumeValue>R$ {total}</ResumeValue>
+                </ResumeTotalDivision>
+            </ResumeTotalArea>
         </CartArea>
     );
 }

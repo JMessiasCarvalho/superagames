@@ -1,7 +1,9 @@
 const initialState = {
-    products:[],
-    discount:0,
-    shipping:0
+    products:[]
+};
+
+function subCalc() {
+    initialState.subtotal = 30;
 };
 
 export default (state = initialState, action) => {
@@ -20,7 +22,6 @@ export default (state = initialState, action) => {
                     qt: action.payload.qt
                 });
             }
-
             return {...state, products};
         break;
         case 'CHANGE_PRODUCT':

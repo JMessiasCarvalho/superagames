@@ -28,7 +28,6 @@ export const ProductList = styled.div`
 
 export const CartArea = styled.div`
     width: 300px;
-    height: auto;
     margin: 20px;
     background-color:#FFF;
     border-radius:5px;

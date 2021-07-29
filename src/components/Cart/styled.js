@@ -9,6 +9,8 @@ export const CartHeader = styled.div`
     width:100%;
     color:#FFF;
     margin-bottom:10px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
 `;
 export const CartIcon = styled.img`
     width:28px;
@@ -61,13 +63,22 @@ export const ProductQtText = styled.div`
     margin:0px 5px;
 `;
 
-/*
-    ProductsArea,
-    ProductItem,
-    ProductPhoto,
-    ProductInfoArea,
-    ProductName,
-    ProductPrice,
-    ProductQuantityArea,
-    ProductQtIcon,
-    ProductQtText*/
+export const ResumeTotalArea = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin:10px;
+`;
+export const ResumeTotalDivision = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #e8f4fc;
+    margin-bottom:5px;
+`;
+export const ResumeText = styled.div`
+    font-size:15px;
+    font-weight:bold;
+`;
+export const ResumeValue = styled.div`
+    font-size:13px;
+`;

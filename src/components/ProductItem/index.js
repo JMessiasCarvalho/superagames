@@ -32,7 +32,7 @@ export default ({data}) => {
                     {data.name}
                 </ProductTitle>
                 <ProductPrice>
-                    R$ {data.price}
+                    R$ {data.price.toFixed(2)}
                 </ProductPrice>
             </ProductInfoArea>
             <AddCartButton onClick={handleAddToCart} >Adicionar ao Carrinho</AddCartButton>
