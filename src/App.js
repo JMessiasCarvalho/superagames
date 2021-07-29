@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import {
+    Container,
+    Header,
+    ShoppingArea,
+    Title,
+    ProductsArea,
+    ProductList,
+    CartArea
+} from './AppStyled';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import productsData from './products.json';
+
+import ProductItem from './components/ProductItem';
+import Cart from './components/Cart';
+
+export default () => {
+    const [products, setProducts] = useState([]);
+
+    const getProducts = () => {
+        setProducts(productsData);
+    }
+
+    useEffect(()=>{
+        getProducts();
+    },[products])
+
+
+    return (
+        <Container>
+            <Header>
+                <Title><h1>SuperaGames</h1></Title>
+            </Header>
+            <ShoppingArea>
+                <ProductsArea>
+                    <ProductList>
+                        {products.map((item, index)=>(
+                            <ProductItem 
+                                key={index}
+                                data={item}
+                            />
+                        ))}
+                    </ProductList>
+                </ProductsArea>
+                <CartArea><Cart /></CartArea>
+            </ShoppingArea>
+        </Container>
+    );
 }
-
-export default App;
